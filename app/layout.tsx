@@ -3,8 +3,8 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: "J&D's Automotive | Auto Repair & Custom Hotrods",
-  description: "J&D's Automotive — Expert auto repair, water pumps, radiators, starters, alternators, and custom hotrod builds. Family owned, built tough, fixed right.",
-  keywords: "auto repair, mechanic, water pump, radiator, starter, alternator, custom hotrods, automotive",
+  description: "J&D's Automotive in Biloxi, MS — Expert auto repair, water pumps, radiators, starters, alternators, and custom hotrod builds. Call (228) 207-6655.",
+  keywords: "auto repair Biloxi MS, mechanic Biloxi, water pump, radiator, starter, alternator, custom hotrods, J&D Automotive, Pass Rd",
   openGraph: {
     title: "J&D's Automotive | Built Tough. Fixed Right.",
     description: "Expert auto repair and custom hotrod builds. Specializing in water pumps, radiators, starters, and alternators.",

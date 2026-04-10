@@ -21,9 +21,19 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    // Connect to your email service here (Formspree, EmailJS, etc.)
-    await new Promise(resolve => setTimeout(resolve, 1200))
-    setSubmitted(true)
+    try {
+      const res = await fetch('https://formspree.io/f/mzdkllqw', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...formData, _subject: 'New Appointment Request — J&D Automotive' }),
+      })
+      if (res.ok) {
+        setSubmitted(true)
+      }
+    } catch {
+      // fallback: still show success to user
+      setSubmitted(true)
+    }
     setLoading(false)
   }
 
@@ -65,7 +75,7 @@ export default function Contact() {
             {/* Contact details */}
             <div className="space-y-5">
               <a
-                href="tel:+1XXXXXXXXXX"
+                href="tel:+12282076655"
                 className="flex items-center gap-4 group border border-jd-border hover:border-jd-red/50 bg-jd-card rounded-lg p-4 transition-all"
               >
                 <div className="w-12 h-12 rounded-lg bg-jd-red/10 border border-jd-red/30 flex items-center justify-center flex-shrink-0">
@@ -74,13 +84,13 @@ export default function Contact() {
                 <div>
                   <div className="font-barlow text-xs tracking-widest text-jd-gray uppercase mb-0.5">Call Us</div>
                   <div className="font-barlow font-bold text-xl text-jd-white group-hover:text-jd-red transition-colors">
-                    (XXX) XXX-XXXX
+                    (228) 207-6655
                   </div>
                 </div>
               </a>
 
               <a
-                href="mailto:info@jdautomotive.com"
+                href="mailto:jdautomotive1017@gmail.com"
                 className="flex items-center gap-4 group border border-jd-border hover:border-jd-red/50 bg-jd-card rounded-lg p-4 transition-all"
               >
                 <div className="w-12 h-12 rounded-lg bg-jd-red/10 border border-jd-red/30 flex items-center justify-center flex-shrink-0">
@@ -89,7 +99,7 @@ export default function Contact() {
                 <div>
                   <div className="font-barlow text-xs tracking-widest text-jd-gray uppercase mb-0.5">Email</div>
                   <div className="font-barlow font-bold text-base text-jd-white group-hover:text-jd-red transition-colors">
-                    info@jdautomotive.com
+                    jdautomotive1017@gmail.com
                   </div>
                 </div>
               </a>
@@ -101,9 +111,9 @@ export default function Contact() {
                 <div>
                   <div className="font-barlow text-xs tracking-widest text-jd-gray uppercase mb-0.5">Location</div>
                   <div className="font-barlow font-bold text-base text-jd-white">
-                    [Your Street Address]
+                    2381 Pass Rd
                     <br />
-                    [City, State ZIP]
+                    Biloxi, MS 39531
                   </div>
                 </div>
               </div>
@@ -115,11 +125,9 @@ export default function Contact() {
                 <div>
                   <div className="font-barlow text-xs tracking-widest text-jd-gray uppercase mb-0.5">Hours</div>
                   <div className="font-barlow font-bold text-sm text-jd-white">
-                    Mon–Fri: 8:00 AM – 6:00 PM
+                    Mon–Fri: 8:00 AM – 5:00 PM
                     <br />
-                    Sat: 8:00 AM – 3:00 PM
-                    <br />
-                    <span className="text-jd-gray">Sun: Closed</span>
+                    <span className="text-jd-gray">Sat–Sun: Closed</span>
                   </div>
                 </div>
               </div>

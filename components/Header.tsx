@@ -79,11 +79,11 @@ export default function Header() {
           {/* CTA + Mobile toggle */}
           <div className="flex items-center gap-3">
             <a
-              href="tel:+1XXXXXXXXXX"
+              href="tel:+12282076655"
               className="hidden sm:flex items-center gap-2 font-barlow font-bold text-sm tracking-wider text-jd-white hover:text-jd-red transition-colors uppercase"
             >
               <span className="text-jd-red text-lg">📞</span>
-              <span className="hidden md:inline">(XXX) XXX-XXXX</span>
+              <span className="hidden md:inline">(228) 207-6655</span>
             </a>
 
             <a href="#contact" className="btn-primary text-sm py-2.5 px-4 hidden sm:inline-flex">
@@ -120,7 +120,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <a href="tel:+1XXXXXXXXXX" className="btn-primary mt-2 justify-center">
+            <a href="tel:+12282076655" className="btn-primary mt-2 justify-center">
               📞 Call Now
             </a>
             <a href="#contact" className="btn-secondary justify-center" onClick={() => setMenuOpen(false)}>

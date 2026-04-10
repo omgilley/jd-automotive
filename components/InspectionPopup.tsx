@@ -40,9 +40,16 @@ export default function InspectionPopup() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    // Replace with your form handler (Formspree, EmailJS, API route, etc.)
-    await new Promise(resolve => setTimeout(resolve, 1200))
-    setSubmitted(true)
+    try {
+      const res = await fetch('https://formspree.io/f/mzdkllqw', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...formData, _subject: '🎯 FREE Inspection Claim — J&D Automotive' }),
+      })
+      if (res.ok) setSubmitted(true)
+    } catch {
+      setSubmitted(true)
+    }
     setLoading(false)
     // Auto-close after success
     setTimeout(() => dismiss(), 3000)

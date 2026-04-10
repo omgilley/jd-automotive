@@ -80,22 +80,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a href="tel:+1XXXXXXXXXX" className="flex items-center gap-2 font-inter text-xs text-jd-gray hover:text-jd-red transition-colors">
-                  <span>📞</span> (XXX) XXX-XXXX
+                <a href="tel:+12282076655" className="flex items-center gap-2 font-inter text-xs text-jd-gray hover:text-jd-red transition-colors">
+                  <span>📞</span> (228) 207-6655
                 </a>
               </li>
               <li>
-                <a href="mailto:info@jdautomotive.com" className="flex items-center gap-2 font-inter text-xs text-jd-gray hover:text-jd-red transition-colors">
-                  <span>✉️</span> info@jdautomotive.com
+                <a href="mailto:jdautomotive1017@gmail.com" className="flex items-center gap-2 font-inter text-xs text-jd-gray hover:text-jd-red transition-colors">
+                  <span>✉️</span> jdautomotive1017@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2 font-inter text-xs text-jd-gray">
                 <span>📍</span>
-                <span>[Your Street Address]<br />[City, State ZIP]</span>
+                <span>2381 Pass Rd<br />Biloxi, MS 39531</span>
               </li>
               <li className="flex items-start gap-2 font-inter text-xs text-jd-gray">
                 <span>🕐</span>
-                <span>Mon–Fri: 8AM–6PM<br />Sat: 8AM–3PM</span>
+                <span>Mon–Fri: 8AM–5PM<br />Sat–Sun: Closed</span>
               </li>
             </ul>
 

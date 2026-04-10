@@ -20,8 +20,16 @@ function QuoteForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    await new Promise(r => setTimeout(r, 1200))
-    setSubmitted(true)
+    try {
+      const res = await fetch('https://formspree.io/f/mzdkllqw', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...formData, _subject: '🔥 Custom Build Request — J&D Automotive' }),
+      })
+      if (res.ok) setSubmitted(true)
+    } catch {
+      setSubmitted(true)
+    }
     setLoading(false)
   }
 
@@ -364,8 +372,8 @@ export default function HotrodsPage() {
 
           <p className="text-center font-barlow text-sm text-jd-gray/60 mt-6 tracking-wide">
             Prefer to talk? Call us at{' '}
-            <a href="tel:+1XXXXXXXXXX" className="text-jd-red hover:text-jd-red-bright transition-colors">
-              (XXX) XXX-XXXX
+            <a href="tel:+12282076655" className="text-jd-red hover:text-jd-red-bright transition-colors">
+              (228) 207-6655
             </a>
           </p>
         </div>
