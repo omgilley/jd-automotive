@@ -118,17 +118,12 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        <Script id="tekmetric-booking" strategy="afterInteractive">{`
-          (function() {
-            var s = document.createElement('script');
-            s.src = 'https://booking.tekmetric.com/iframe/modal.js?time=' + new Date().getTime();
-            s.defer = true;
-            document.body.appendChild(s);
-            var l = document.createElement('link');
-            l.rel = 'stylesheet';
-            l.href = 'https://booking.tekmetric.com/iframe/modal.css?time=' + new Date().getTime();
-            document.head.appendChild(l);
-          })();
+        <Script src="https://booking.tekmetric.com/iframe/modal.js" strategy="afterInteractive" />
+        <Script id="tekmetric-css" strategy="afterInteractive">{`
+          var l = document.createElement('link');
+          l.rel = 'stylesheet';
+          l.href = 'https://booking.tekmetric.com/iframe/modal.css';
+          document.head.appendChild(l);
         `}</Script>
       </body>
     </html>

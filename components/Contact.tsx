@@ -1,12 +1,6 @@
 'use client'
 
-const TEKMETRIC_ID = '8e9b140b-6e56-49a9-ae32-380693734bc8'
-
-function openBooking() {
-  if (typeof window !== 'undefined' && (window as any).onShowBooking) {
-    (window as any).onShowBooking(TEKMETRIC_ID)
-  }
-}
+import { openBooking } from '@/lib/tekmetric'
 
 export default function Contact() {
   return (

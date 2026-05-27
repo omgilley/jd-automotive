@@ -1,3 +1,5 @@
+import BookingButton from '@/components/BookingButton'
+
 export default function Services() {
   const services = [
     { icon: '🔧', title: 'Engine Repair & Diagnostics', desc: 'Full engine diagnostics and repair using the latest scan tools.' },
@@ -73,9 +75,9 @@ export default function Services() {
               <a href="tel:+12282076655" className="btn-primary">
                 📞 Call Us Now
               </a>
-              <a href="#contact" className="btn-secondary">
+              <BookingButton className="btn-secondary">
                 Schedule Online
-              </a>
+              </BookingButton>
             </div>
           </div>
         </div>

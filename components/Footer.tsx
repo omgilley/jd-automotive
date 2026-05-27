@@ -1,5 +1,8 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import BookingButton from '@/components/BookingButton'
 
 export default function Footer() {
   return (
@@ -62,7 +65,6 @@ export default function Footer() {
                 { label: '🔥 Hot Rod Builds', href: '/hotrods' },
                 { label: 'Reviews', href: '#reviews' },
                 { label: 'Contact', href: '#contact' },
-                { label: 'Schedule Service', href: '#contact' },
               ].map(link => (
                 <li key={link.label}>
                   <Link href={link.href} className="font-inter text-xs text-jd-gray hover:text-jd-red transition-colors">
@@ -70,6 +72,11 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <BookingButton className="font-inter text-xs text-jd-gray hover:text-jd-red transition-colors bg-transparent border-0 p-0 cursor-pointer">
+                  Schedule Service
+                </BookingButton>
+              </li>
             </ul>
           </div>
 
@@ -99,9 +106,9 @@ export default function Footer() {
               </li>
             </ul>
 
-            <a href="#contact" className="btn-primary mt-5 text-sm py-2.5 px-4 inline-flex">
+            <BookingButton className="btn-primary mt-5 text-sm py-2.5 px-4 inline-flex">
               Schedule Service
-            </a>
+            </BookingButton>
           </div>
         </div>
 

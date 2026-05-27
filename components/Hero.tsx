@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
+import BookingButton from '@/components/BookingButton'
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -77,10 +78,10 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up opacity-0 delay-500">
-          <a href="#contact" className="btn-primary text-lg py-4 px-8 glow-red phone-pulse">
+          <BookingButton className="btn-primary text-lg py-4 px-8 glow-red phone-pulse">
             <span>🔧</span>
             Schedule Free Inspection
-          </a>
+          </BookingButton>
           <Link href="/hotrods" className="btn-secondary text-lg py-4 px-8">
             <span>🔥</span>
             View Our Hot Rod Builds

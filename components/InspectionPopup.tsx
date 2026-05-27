@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { openBooking } from '@/lib/tekmetric'
 
 const STORAGE_KEY = 'jd-popup-dismissed'
 const DISMISS_DAYS = 7
-const TEKMETRIC_ID = '8e9b140b-6e56-49a9-ae32-380693734bc8'
 
 export default function InspectionPopup() {
   const [show, setShow] = useState(false)
@@ -27,10 +27,8 @@ export default function InspectionPopup() {
   }
 
   const claimInspection = () => {
-    if (typeof window !== 'undefined' && (window as any).onShowBooking) {
-      (window as any).onShowBooking(TEKMETRIC_ID)
-    }
     dismiss()
+    openBooking()
   }
 
   if (!show) return null
