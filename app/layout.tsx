@@ -120,14 +120,82 @@ export default function RootLayout({
         {children}
         <Script id="tekmetric-booking" strategy="afterInteractive">{`
           (function() {
+            var modalEl = null;
+
+            // Watch for the Tekmetric modal being injected into the DOM
+            var observer = new MutationObserver(function(mutations) {
+              mutations.forEach(function(m) {
+                m.addedNodes.forEach(function(node) {
+                  if (node.nodeType !== 1) return;
+                  var el = node;
+                  // Detect the modal by looking for a tekmetric iframe inside it
+                  var hasFrame = el.querySelector && el.querySelector('iframe[src*="tekmetric"], iframe[src*="booking"]');
+                  if (hasFrame) {
+                    modalEl = el;
+                    // Boost z-index so nothing (including our fixed header) sits on top
+                    el.style.zIndex = '999999';
+                    el.style.position = el.style.position || 'fixed';
+                  }
+                });
+              });
+            });
+            observer.observe(document.body, { childList: true, subtree: false });
+
+            // Close the modal however we can
+            function closeModal() {
+              if (modalEl) {
+                modalEl.style.display = 'none';
+                modalEl = null;
+                return;
+              }
+              // Fallback: click whatever looks like a close button inside a modal
+              var candidates = document.querySelectorAll('button, [role="button"]');
+              for (var i = 0; i < candidates.length; i++) {
+                var t = (candidates[i].textContent || candidates[i].getAttribute('aria-label') || '').trim();
+                if (/^(×|✕|✖|close|dismiss)$/i.test(t) || t === 'X' || t === 'x') {
+                  candidates[i].click();
+                  return;
+                }
+              }
+            }
+
+            // Wrap onShowBooking to push a history entry first so back button
+            // closes the modal instead of leaving the page
+            var _orig = null;
+            function wrapOpen() {
+              if (window.onShowBooking && window.onShowBooking !== _orig) {
+                _orig = window.onShowBooking;
+                window.onShowBooking = function(id) {
+                  window.history.pushState({ tekOpen: true }, '', window.location.href);
+                  _orig(id);
+                };
+              }
+            }
+
+            // Back button closes the modal
+            window.addEventListener('popstate', function() {
+              closeModal();
+            });
+
+            // ESC key closes the modal
+            document.addEventListener('keydown', function(e) {
+              if (e.key === 'Escape') closeModal();
+            });
+
+            // Load the Tekmetric script and wrap onShowBooking once it's ready
             var s = document.createElement('script');
             s.src = 'https://booking.tekmetric.com/iframe/modal.js?time=' + new Date().getTime();
             s.defer = true;
+            s.onload = function() { wrapOpen(); };
             document.body.appendChild(s);
+
             var l = document.createElement('link');
             l.rel = 'stylesheet';
             l.href = 'https://booking.tekmetric.com/iframe/modal.css?time=' + new Date().getTime();
             document.head.appendChild(l);
+
+            // Safety net in case onload already fired
+            setTimeout(wrapOpen, 800);
           })();
         `}</Script>
       </body>
