@@ -4,6 +4,14 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+const TEKMETRIC_ID = '8e9b140b-6e56-49a9-ae32-380693734bc8'
+
+function openBooking() {
+  if (typeof window !== 'undefined' && (window as any).onShowBooking) {
+    (window as any).onShowBooking(TEKMETRIC_ID)
+  }
+}
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -30,6 +38,38 @@ export default function Header() {
           : 'bg-gradient-to-b from-black/80 to-transparent'
       }`}
     >
+      {/* Info bar — hours & phone */}
+      <div className="hidden md:block bg-black/80 border-b border-jd-border/40 py-1.5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <span className="font-barlow text-xs text-jd-gray tracking-wide">
+              <span className="text-jd-red mr-1">🕐</span> Mon–Fri: 8:00 AM – 5:00 PM &nbsp;|&nbsp; Sat–Sun: Closed
+            </span>
+            <span className="font-barlow text-xs text-jd-gray tracking-wide">
+              <span className="text-jd-red mr-1">📍</span> 2381 Pass Rd, Biloxi, MS 39531
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://www.bbb.org/us/ms/biloxi/profile/auto-repairs/j-ds-automotive-llc-0523-235903086/#sealclick"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              title="J&D's Automotive BBB Business Review"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://seal-ms.bbb.org/seals/black-seal-200-42-whitetxt-bbb-235903086.png"
+                alt="BBB Accredited Business"
+                style={{ height: 28, width: 'auto', border: 0 }}
+              />
+            </a>
+            <a href="tel:+12282076655" className="font-barlow text-xs font-bold text-jd-red hover:text-jd-red-bright tracking-wider transition-colors">
+              📞 (228) 207-6655
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Top accent bar */}
       <div className="flag-stripe" />
 
@@ -86,9 +126,9 @@ export default function Header() {
               <span className="hidden md:inline">(228) 207-6655</span>
             </a>
 
-            <a href="#contact" className="btn-primary text-sm py-2.5 px-4 hidden sm:inline-flex">
+            <button onClick={openBooking} className="btn-primary text-sm py-2.5 px-4 hidden sm:inline-flex">
               Schedule Now
-            </a>
+            </button>
 
             {/* Hamburger */}
             <button
@@ -123,9 +163,9 @@ export default function Header() {
             <a href="tel:+12282076655" className="btn-primary mt-2 justify-center">
               📞 Call Now
             </a>
-            <a href="#contact" className="btn-secondary justify-center" onClick={() => setMenuOpen(false)}>
+            <button onClick={() => { setMenuOpen(false); openBooking() }} className="btn-secondary justify-center">
               Schedule Service
-            </a>
+            </button>
           </div>
         </div>
       )}

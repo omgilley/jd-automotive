@@ -1,114 +1,38 @@
-'use client'
-
-import { useState } from 'react'
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import HotrodsQuoteForm from '@/components/HotrodsQuoteForm'
+import HotrodsGallery from '@/components/HotrodsGallery'
 
-function QuoteForm() {
-  const [formData, setFormData] = useState({
-    name: '', phone: '', email: '', vehicle: '', year: '', vision: '',
-  })
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    try {
-      const res = await fetch('https://formspree.io/f/mzdkllqw', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...formData, _subject: '🔥 Custom Build Request — J&D Automotive' }),
-      })
-      if (res.ok) setSubmitted(true)
-    } catch {
-      setSubmitted(true)
-    }
-    setLoading(false)
-  }
-
-  if (submitted) {
-    return (
-      <div className="text-center py-16 animate-scale-in">
-        <div className="text-6xl mb-4">🔥</div>
-        <h3 className="font-bebas text-4xl tracking-wider text-jd-white mb-3">BUILD REQUEST RECEIVED!</h3>
-        <p className="font-barlow text-lg text-jd-silver tracking-wide">
-          We&apos;ll reach out to discuss your vision. Get ready to build something legendary.
-        </p>
-      </div>
-    )
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label className="font-barlow text-xs tracking-widest text-jd-gray uppercase block mb-1.5">Full Name *</label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="John Smith" required className="input-dark" />
-        </div>
-        <div>
-          <label className="font-barlow text-xs tracking-widest text-jd-gray uppercase block mb-1.5">Phone *</label>
-          <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="(555) 555-5555" required className="input-dark" />
-        </div>
-      </div>
-      <div>
-        <label className="font-barlow text-xs tracking-widest text-jd-gray uppercase block mb-1.5">Email *</label>
-        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@email.com" required className="input-dark" />
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label className="font-barlow text-xs tracking-widest text-jd-gray uppercase block mb-1.5">Vehicle (Make/Model)</label>
-          <input type="text" name="vehicle" value={formData.vehicle} onChange={handleChange} placeholder="1969 Camaro" className="input-dark" />
-        </div>
-        <div>
-          <label className="font-barlow text-xs tracking-widest text-jd-gray uppercase block mb-1.5">Budget Range</label>
-          <select name="year" value={formData.year} onChange={handleChange} className="input-dark">
-            <option value="">Select range...</option>
-            <option>Under $10,000</option>
-            <option>$10,000 – $25,000</option>
-            <option>$25,000 – $50,000</option>
-            <option>$50,000 – $100,000</option>
-            <option>$100,000+</option>
-            <option>Let&apos;s talk</option>
-          </select>
-        </div>
-      </div>
-      <div>
-        <label className="font-barlow text-xs tracking-widest text-jd-gray uppercase block mb-1.5">Describe Your Vision</label>
-        <textarea
-          name="vision"
-          value={formData.vision}
-          onChange={handleChange}
-          placeholder="Tell us about your dream build — style, engine, suspension, interior, paint... don't hold back."
-          rows={4}
-          className="input-dark resize-none"
-        />
-      </div>
-      <button type="submit" disabled={loading} className="btn-primary w-full justify-center text-base py-3.5 disabled:opacity-60">
-        {loading ? (
-          <><span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />Sending...</>
-        ) : (
-          <>🔥 Request Custom Build Quote</>
-        )}
-      </button>
-    </form>
-  )
+export const metadata: Metadata = {
+  title: 'Custom Hotrod Builds',
+  description: 'Custom hotrod builds, muscle car restorations, and one-of-a-kind builds crafted by hand at J&D Automotive in Biloxi, MS. American Muscle, Street Rods, Pro Touring, Show Cars. Request a quote.',
+  openGraph: {
+    title: "Custom Hotrod Builds | J&D's Automotive",
+    description: 'Custom hotrod builds, muscle car restorations, and one-of-a-kind builds crafted by hand in Biloxi, MS.',
+    images: [{ url: '/IMG_1037.JPEG', alt: 'Custom Hotrod Build by J&D Automotive' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Custom Hotrod Builds | J&D's Automotive",
+    description: 'Custom hotrod builds, muscle car restorations, and one-of-a-kind builds in Biloxi, MS.',
+  },
+  alternates: {
+    canonical: 'https://jd-automotive.vercel.app/hotrods',
+  },
 }
 
 const builds = [
-  { title: 'American Muscle', category: 'Restoration', desc: 'Full frame-off restoration with modern reliability upgrades.' },
-  { title: 'Street Rod', category: 'Custom Build', desc: 'Built to turn heads on the boulevard and tear up the track.' },
-  { title: 'Pro Touring', category: 'Performance', desc: 'Classic looks, modern suspension, and serious horsepower.' },
-  { title: 'Show Car', category: 'Show Build', desc: 'Trophy-winning detail work and competition-level finishing.' },
-  { title: 'Rat Rod', category: 'Custom', desc: 'Raw, aggressive, and unapologetically American.' },
-  { title: 'Engine Build', category: 'Performance', desc: 'Crate swaps, big block builds, and custom engine packages.' },
+  { title: 'American Muscle', category: 'Restoration', desc: 'Full frame-off restoration with modern reliability upgrades.', image: '/IMG_1037.JPEG' },
+  { title: 'Street Rod', category: 'Custom Build', desc: 'Built to turn heads on the boulevard and tear up the track.', image: '/IMG_1038.JPEG' },
+  { title: 'Pro Touring', category: 'Performance', desc: 'Classic looks, modern suspension, and serious horsepower.', image: '/IMG_1039.JPEG' },
+  { title: 'Show Car', category: 'Show Build', desc: 'Trophy-winning detail work and competition-level finishing.', image: '/IMG_1040.JPEG' },
+  { title: 'Rat Rod', category: 'Custom', desc: 'Raw, aggressive, and unapologetically American.', image: '/IMG_1041.JPEG' },
+  { title: 'Engine Build', category: 'Performance', desc: 'Crate swaps, big block builds, and custom engine packages.', image: '/IMG_1042.JPEG' },
 ]
+
 
 export default function HotrodsPage() {
   return (
@@ -199,30 +123,20 @@ export default function HotrodsPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {builds.map((build, i) => (
+            {builds.map((build) => (
               <div
                 key={build.title}
                 className="group card-hover bg-jd-card border border-jd-border rounded-lg overflow-hidden"
               >
-                {/* Placeholder build image area */}
-                <div
-                  className="relative h-52 bg-gradient-to-br from-jd-border to-[#0D0D0D] flex items-center justify-center overflow-hidden"
-                >
-                  {/* Diagonal stripe pattern */}
-                  <div className="absolute inset-0 opacity-20" style={{
-                    backgroundImage: 'repeating-linear-gradient(-45deg, #CC1414, #CC1414 1px, transparent 1px, transparent 20px)',
-                  }} />
-                  <div className="text-6xl opacity-30 group-hover:opacity-50 transition-opacity">
-                    {['🚗','🏎️','⚙️','🔥','💀','⚡'][i]}
-                  </div>
-                  {/* Photo placeholder label */}
-                  <div className="absolute bottom-2 right-2">
-                    <span className="font-barlow text-xs text-jd-gray/50 uppercase tracking-widest">
-                      [ Add Photo ]
-                    </span>
-                  </div>
-
-                  {/* Category badge */}
+                <div className="relative h-52 overflow-hidden">
+                  <Image
+                    src={build.image}
+                    alt={`${build.title} — J&D Automotive Biloxi MS`}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute top-3 left-3 bg-jd-red/90 rounded px-2 py-0.5">
                     <span className="font-barlow text-xs font-bold tracking-wider text-white uppercase">
                       {build.category}
@@ -241,13 +155,21 @@ export default function HotrodsPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Photo placeholder CTA */}
-          <div className="mt-10 text-center">
-            <p className="font-barlow text-sm text-jd-gray/50 tracking-wide italic">
-              📸 Photo gallery coming soon — contact us to see current and past builds
-            </p>
+      {/* Photo Gallery */}
+      <section className="py-16 md:py-20 bg-jd-dark relative">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-jd-border to-transparent" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10">
+            <div className="badge mx-auto mb-4"><span>📸</span><span>Build Gallery</span></div>
+            <h2 className="font-bebas text-4xl md:text-6xl tracking-wider text-jd-white mb-4">
+              OUR WORK
+            </h2>
+            <div className="section-divider" />
           </div>
+          <HotrodsGallery />
         </div>
       </section>
 
@@ -267,15 +189,14 @@ export default function HotrodsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-            {/* Connection line */}
             <div className="hidden lg:block absolute top-8 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-jd-red/30 to-transparent" />
 
             {[
               { step: '01', title: 'Consultation', desc: 'Tell us your vision. We listen, advise, and propose the best path forward for your dream build.' },
-              { step: '02', title: 'Design & Quote', desc: 'We plan the build, source parts, and give you a transparent detailed estimate before a bolt is turned.' },
-              { step: '03', title: 'The Build', desc: 'Our craftsmen get to work. We send updates throughout — this is your build, and you\'re part of the process.' },
+              { step: '02', title: 'Scope & Estimate', desc: "We map out the build, source parts, and give you our best starting estimate. Custom builds often reveal new details during teardown — we stay in close contact and always get your approval before moving forward." },
+              { step: '03', title: 'The Build', desc: "Our craftsmen get to work. We send updates throughout — this is your build, and you're part of the process." },
               { step: '04', title: 'Delivery', desc: 'Your beast is ready. We go over every detail, fire it up, and hand you the keys to your legend.' },
-            ].map((item, i) => (
+            ].map((item) => (
               <div key={item.step} className="relative group">
                 <div className="bg-jd-card border border-jd-border hover:border-jd-red/40 rounded-lg p-6 transition-all duration-300 h-full">
                   <div className="font-bebas text-6xl text-jd-red/20 leading-none mb-2 group-hover:text-jd-red/40 transition-colors">
@@ -328,7 +249,7 @@ export default function HotrodsPage() {
                 { icon: '⚡', title: 'Performance First', desc: 'Every build is built to run — not just to look good in a garage.' },
                 { icon: '📸', title: 'Documented Process', desc: 'We photograph and document every stage of your build.' },
                 { icon: '🛡️', title: 'Build Warranty', desc: 'We stand behind our work. Quality guaranteed.' },
-                { icon: '🤝', title: 'Client Partnership', desc: 'You&apos;re involved at every major decision point — it&apos;s your build.' },
+                { icon: '🤝', title: 'Client Partnership', desc: "You're involved at every major decision point — it's your build." },
               ].map(item => (
                 <div key={item.title} className="bg-jd-card border border-jd-border hover:border-jd-red/30 rounded-lg p-4 group transition-all">
                   <div className="text-2xl mb-2">{item.icon}</div>
@@ -367,7 +288,7 @@ export default function HotrodsPage() {
 
           <div className="bg-jd-card border border-jd-border rounded-xl p-8 relative overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-jd-red-dark via-jd-red to-jd-red-dark" />
-            <QuoteForm />
+            <HotrodsQuoteForm />
           </div>
 
           <p className="text-center font-barlow text-sm text-jd-gray/60 mt-6 tracking-wide">

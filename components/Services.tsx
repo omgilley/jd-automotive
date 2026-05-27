@@ -12,6 +12,7 @@ export default function Services() {
     { icon: '🔑', title: 'Timing Belt / Chain', desc: 'Inspection and replacement to prevent catastrophic engine failure.' },
     { icon: '⚙️', title: 'Fuel System', desc: 'Injector cleaning, fuel pump replacement, and fuel filter service.' },
     { icon: '🚗', title: 'Pre-Purchase Inspection', desc: 'Buying a used car? Let us check it out before you sign.' },
+    { icon: '🎨', title: 'Paint & Body', desc: 'Custom paint jobs, body repair, and finish work. From touch-ups to full resprays — we make it look right.' },
   ]
 
   return (
@@ -69,7 +70,7 @@ export default function Services() {
               If it&apos;s got an engine, we can fix it. Call or schedule online and let&apos;s talk.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:+1XXXXXXXXXX" className="btn-primary">
+              <a href="tel:+12282076655" className="btn-primary">
                 📞 Call Us Now
               </a>
               <a href="#contact" className="btn-secondary">

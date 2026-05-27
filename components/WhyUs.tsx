@@ -69,8 +69,13 @@ export default function WhyUs() {
               TIME.
             </h2>
             <div className="section-divider-left" />
-            <p className="font-barlow text-xl text-jd-silver leading-relaxed tracking-wide mb-8">
+            <p className="font-barlow text-xl text-jd-silver leading-relaxed tracking-wide mb-6">
               We&apos;re not a franchise. We&apos;re your neighbors. We&apos;ve built our reputation one honest repair at a time — and we intend to keep it that way.
+            </p>
+
+            {/* About Us */}
+            <p className="font-barlow text-base text-jd-silver/80 leading-relaxed tracking-wide mb-8">
+              J&amp;D&apos;s Automotive is a family-owned and operated business that has been proudly serving the community since 2021. Built on a foundation of trust, quality, and personalized service, J&amp;D&apos;s Automotive treats every customer like family. With skilled technicians and a commitment to honest work, the shop offers reliable automotive repair and maintenance services designed to keep vehicles running safely and efficiently. Whether it&apos;s routine maintenance or major repairs, J&amp;D&apos;s Automotive strives to deliver exceptional results with the friendly, hometown service their customers deserve.
             </p>
 
             {/* American pride callout */}

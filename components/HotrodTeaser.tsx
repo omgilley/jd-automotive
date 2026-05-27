@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function HotrodTeaser() {
@@ -52,9 +53,29 @@ export default function HotrodTeaser() {
           Beyond the everyday repair work lives our passion — custom hotrods, muscle car restorations, and one-of-a-kind builds crafted by hand.
         </p>
 
-        <p className="font-barlow text-lg text-jd-red/80 tracking-widest uppercase mb-12">
+        <p className="font-barlow text-lg text-jd-red/80 tracking-widest uppercase mb-10">
           ✦ Show Cars ✦ Street Rods ✦ Pro Builds ✦ Full Restorations ✦
         </p>
+
+        {/* Photo strip */}
+        <div className="grid grid-cols-3 gap-3 mb-12 max-w-4xl mx-auto">
+          {[
+            { src: '/IMG_1043.JPEG', alt: 'Custom hotrod build by J&D Automotive' },
+            { src: '/IMG_1044.JPEG', alt: 'Muscle car restoration by J&D Automotive' },
+            { src: '/IMG_1037.JPEG', alt: 'Custom build at J&D Automotive Biloxi' },
+          ].map((img, i) => (
+            <div key={i} className="relative aspect-video overflow-hidden rounded-lg group">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300" />
+            </div>
+          ))}
+        </div>
 
         {/* Visual cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">

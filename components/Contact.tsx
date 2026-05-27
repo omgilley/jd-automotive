@@ -1,48 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+const TEKMETRIC_ID = '8e9b140b-6e56-49a9-ae32-380693734bc8'
+
+function openBooking() {
+  if (typeof window !== 'undefined' && (window as any).onShowBooking) {
+    (window as any).onShowBooking(TEKMETRIC_ID)
+  }
+}
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    service: '',
-    message: '',
-    preferred: '',
-  })
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    try {
-      const res = await fetch('https://formspree.io/f/mzdkllqw', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...formData, _subject: 'New Appointment Request — J&D Automotive' }),
-      })
-      if (res.ok) {
-        setSubmitted(true)
-      }
-    } catch {
-      // fallback: still show success to user
-      setSubmitted(true)
-    }
-    setLoading(false)
-  }
-
-  const services = [
-    'Water Pump', 'Radiator', 'Starter', 'Alternator',
-    'Brakes', 'Oil Change', 'Engine Repair', 'Transmission',
-    'A/C & Heating', 'Electrical', 'Suspension', 'Other',
-  ]
-
   return (
     <section id="contact" className="relative py-20 md:py-28 overflow-hidden bg-jd-dark">
       {/* Top border */}
@@ -69,7 +35,7 @@ export default function Contact() {
             </h2>
             <div className="section-divider-left" />
             <p className="font-barlow text-xl text-jd-silver tracking-wide mb-10 leading-relaxed">
-              Schedule your service online and we&apos;ll confirm within the hour. Or just give us a call — we pick up.
+              Book your appointment online — it goes straight into our shop calendar and we&apos;ll be ready for you. Or just give us a call.
             </p>
 
             {/* Contact details */}
@@ -104,18 +70,54 @@ export default function Contact() {
                 </div>
               </a>
 
-              <div className="flex items-center gap-4 border border-jd-border bg-jd-card rounded-lg p-4">
+              <a
+                href="https://maps.google.com/?q=2381+Pass+Rd,+Biloxi,+MS+39531"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 group border border-jd-border hover:border-jd-red/50 bg-jd-card rounded-lg p-4 transition-all"
+              >
                 <div className="w-12 h-12 rounded-lg bg-jd-red/10 border border-jd-red/30 flex items-center justify-center flex-shrink-0">
                   <span className="text-xl">📍</span>
                 </div>
                 <div>
                   <div className="font-barlow text-xs tracking-widest text-jd-gray uppercase mb-0.5">Location</div>
-                  <div className="font-barlow font-bold text-base text-jd-white">
-                    2381 Pass Rd
-                    <br />
-                    Biloxi, MS 39531
+                  <div className="font-barlow font-bold text-base text-jd-white group-hover:text-jd-red transition-colors">
+                    2381 Pass Rd<br />Biloxi, MS 39531
                   </div>
+                  <div className="font-inter text-xs text-jd-gray mt-0.5">Tap for directions →</div>
                 </div>
+              </a>
+
+              {/* Finding us callout */}
+              <div className="border border-jd-red/20 bg-jd-red/5 rounded-lg p-4">
+                <p className="font-barlow text-sm font-bold text-jd-white mb-1">📍 Having trouble finding us?</p>
+                <p className="font-inter text-xs text-jd-gray leading-relaxed mb-2">
+                  We&apos;re on Pass Rd — right next to <strong className="text-jd-silver">Cubesmart Self Storage</strong>, near Popps Ferry Rd. AutoZone is just to our west, Walgreens to the east. If you get to Burger King or Starbucks you&apos;ve gone a little too far south.
+                </p>
+                <p className="font-inter text-xs text-jd-gray leading-relaxed mb-3">
+                  Can&apos;t find us? Call and we&apos;ll talk you right to the door.
+                </p>
+                <a
+                  href="https://maps.google.com/?q=2381+Pass+Rd,+Biloxi,+MS+39531"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded overflow-hidden mb-3 border border-jd-border hover:border-jd-red/50 transition-colors"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/Directions .PNG"
+                    alt="Map to J&D's Automotive — 2381 Pass Rd, Biloxi, MS"
+                    className="w-full object-cover"
+                  />
+                </a>
+                <a
+                  href="https://maps.google.com/?q=2381+Pass+Rd,+Biloxi,+MS+39531"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block font-barlow text-xs font-bold text-jd-red hover:text-jd-red-bright tracking-wide uppercase transition-colors"
+                >
+                  Open in Google Maps →
+                </a>
               </div>
 
               <div className="flex items-center gap-4 border border-jd-border bg-jd-card rounded-lg p-4">
@@ -134,144 +136,56 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right: Form */}
-          <div className="bg-jd-card border border-jd-border rounded-xl p-8 relative overflow-hidden">
+          {/* Right: Online Booking */}
+          <div className="bg-jd-card border border-jd-border rounded-xl p-8 relative overflow-hidden flex flex-col items-center text-center">
             {/* Top red accent */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-jd-red-dark via-jd-red to-jd-red-dark" />
 
-            {submitted ? (
-              <div className="flex flex-col items-center justify-center py-16 text-center animate-scale-in">
-                <div className="text-6xl mb-4">✅</div>
-                <h3 className="font-bebas text-4xl tracking-wider text-jd-white mb-3">
-                  YOU&apos;RE ALL SET!
-                </h3>
-                <p className="font-barlow text-lg text-jd-silver tracking-wide">
-                  We&apos;ll be in touch within the hour to confirm your appointment.
-                  <br />Thanks for choosing J&amp;D&apos;s Automotive!
-                </p>
+            <div className="text-5xl mb-4 mt-4">🔧</div>
+            <h3 className="font-bebas text-4xl tracking-wider text-jd-white mb-2">
+              BOOK ONLINE
+            </h3>
+            <p className="font-barlow text-sm text-jd-gray tracking-wide mb-2 uppercase">
+              Powered by Tekmetric
+            </p>
+            <div className="w-12 h-px bg-jd-red/40 mb-6" />
+            <p className="font-barlow text-lg text-jd-silver tracking-wide leading-relaxed mb-8 max-w-xs">
+              Select your service, pick a time, and your appointment goes straight into our shop calendar — no back-and-forth.
+            </p>
+
+            <button
+              onClick={openBooking}
+              className="btn-primary w-full justify-center text-lg py-4 mb-6"
+            >
+              📅 Book an Appointment
+            </button>
+
+            <div className="w-full border border-jd-border rounded-lg p-4 bg-black/20 mb-6">
+              <p className="font-barlow text-xs text-jd-gray tracking-widest uppercase mb-3">What happens when you book</p>
+              <div className="space-y-2 text-left">
+                {[
+                  'Your slot is reserved on our calendar instantly',
+                  'We get notified and confirm within the hour',
+                  'A ticket is created in our shop management system',
+                  'You get a reminder before your appointment',
+                ].map(step => (
+                  <div key={step} className="flex items-start gap-2">
+                    <span className="text-jd-red text-xs mt-0.5 flex-shrink-0">✓</span>
+                    <span className="font-inter text-xs text-jd-gray leading-relaxed">{step}</span>
+                  </div>
+                ))}
               </div>
-            ) : (
-              <>
-                <h3 className="font-bebas text-3xl tracking-wider text-jd-white mb-2">
-                  SCHEDULE SERVICE
-                </h3>
-                <p className="font-barlow text-sm text-jd-gray tracking-wide mb-6 uppercase">
-                  We&apos;ll confirm within the hour ⚡
-                </p>
+            </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="font-barlow text-xs tracking-widest text-jd-gray uppercase block mb-1.5">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="John Smith"
-                        required
-                        className="input-dark"
-                      />
-                    </div>
-                    <div>
-                      <label className="font-barlow text-xs tracking-widest text-jd-gray uppercase block mb-1.5">
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="(555) 555-5555"
-                        required
-                        className="input-dark"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="font-barlow text-xs tracking-widest text-jd-gray uppercase block mb-1.5">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="john@email.com"
-                      required
-                      className="input-dark"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="font-barlow text-xs tracking-widest text-jd-gray uppercase block mb-1.5">
-                      Service Needed
-                    </label>
-                    <select
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      className="input-dark"
-                    >
-                      <option value="" disabled>Select a service...</option>
-                      {services.map(s => (
-                        <option key={s} value={s}>{s}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="font-barlow text-xs tracking-widest text-jd-gray uppercase block mb-1.5">
-                      Preferred Date
-                    </label>
-                    <input
-                      type="date"
-                      name="preferred"
-                      value={formData.preferred}
-                      onChange={handleChange}
-                      className="input-dark"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="font-barlow text-xs tracking-widest text-jd-gray uppercase block mb-1.5">
-                      Tell Us What&apos;s Going On
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Describe the issue or service you need..."
-                      rows={3}
-                      className="input-dark resize-none"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="btn-primary w-full justify-center text-base py-3.5 mt-2 disabled:opacity-60"
-                  >
-                    {loading ? (
-                      <>
-                        <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>🔧 Request Appointment</>
-                    )}
-                  </button>
-
-                  <p className="font-inter text-xs text-jd-gray text-center">
-                    We respect your privacy. Your info is never shared.
-                  </p>
-                </form>
-              </>
-            )}
+            <p className="font-inter text-xs text-jd-gray">
+              Prefer to call?{' '}
+              <a href="tel:+12282076655" className="text-jd-red hover:text-jd-red-bright transition-colors font-bold">
+                (228) 207-6655
+              </a>
+              {' '}— we pick up.
+            </p>
           </div>
+
         </div>
       </div>
     </section>
