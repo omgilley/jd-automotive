@@ -145,9 +145,6 @@ export default function Contact() {
             <h3 className="font-bebas text-4xl tracking-wider text-jd-white mb-2">
               BOOK ONLINE
             </h3>
-            <p className="font-barlow text-sm text-jd-gray tracking-wide mb-2 uppercase">
-              Powered by Tekmetric
-            </p>
             <div className="w-12 h-px bg-jd-red/40 mb-6" />
             <p className="font-barlow text-lg text-jd-silver tracking-wide leading-relaxed mb-8 max-w-xs">
               Select your service, pick a time, and your appointment goes straight into our shop calendar — no back-and-forth.
@@ -159,23 +156,6 @@ export default function Contact() {
             >
               📅 Book an Appointment
             </button>
-
-            <div className="w-full border border-jd-border rounded-lg p-4 bg-black/20 mb-6">
-              <p className="font-barlow text-xs text-jd-gray tracking-widest uppercase mb-3">What happens when you book</p>
-              <div className="space-y-2 text-left">
-                {[
-                  'Your slot is reserved on our calendar instantly',
-                  'We get notified and confirm within the hour',
-                  'A ticket is created in our shop management system',
-                  'You get a reminder before your appointment',
-                ].map(step => (
-                  <div key={step} className="flex items-start gap-2">
-                    <span className="text-jd-red text-xs mt-0.5 flex-shrink-0">✓</span>
-                    <span className="font-inter text-xs text-jd-gray leading-relaxed">{step}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
 
             <p className="font-inter text-xs text-jd-gray">
               Prefer to call?{' '}
