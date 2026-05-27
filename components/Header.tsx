@@ -49,24 +49,9 @@ export default function Header() {
               <span className="text-jd-red mr-1">📍</span> 2381 Pass Rd, Biloxi, MS 39531
             </span>
           </div>
-          <div className="flex items-center gap-4">
-            <a
-              href="https://www.bbb.org/us/ms/biloxi/profile/auto-repairs/j-ds-automotive-llc-0523-235903086/#sealclick"
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-              title="J&D's Automotive BBB Business Review"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://seal-ms.bbb.org/seals/black-seal-200-42-whitetxt-bbb-235903086.png"
-                alt="BBB Accredited Business"
-                style={{ height: 28, width: 'auto', border: 0 }}
-              />
-            </a>
-            <a href="tel:+12282076655" className="font-barlow text-xs font-bold text-jd-red hover:text-jd-red-bright tracking-wider transition-colors">
-              📞 (228) 207-6655
-            </a>
-          </div>
+          <a href="tel:+12282076655" className="font-barlow text-xs font-bold text-jd-red hover:text-jd-red-bright tracking-wider transition-colors">
+            📞 (228) 207-6655
+          </a>
         </div>
       </div>
 
