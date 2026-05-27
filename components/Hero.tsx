@@ -103,14 +103,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
-        <span className="font-barlow text-xs tracking-widest text-jd-gray uppercase">Scroll Down</span>
-        <div className="w-0.5 h-8 bg-gradient-to-b from-jd-gray to-transparent" />
-        <div className="w-1.5 h-1.5 rounded-full bg-jd-red animate-bounce" />
-      </div>
-
-      {/* Bottom fade */}
+{/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-jd-black to-transparent pointer-events-none" />
     </section>
   )
