@@ -95,6 +95,7 @@ export default function Hero() {
             { icon: '🏆', label: 'Quality Guaranteed' },
             { icon: '⚡', label: 'Fast Turnaround' },
             { icon: '🤝', label: 'Honest Estimates' },
+            { icon: '💳', label: 'Financing Available' },
           ].map((badge) => (
             <div key={badge.label} className="flex items-center gap-2 text-jd-silver">
               <span className="text-xl">{badge.icon}</span>

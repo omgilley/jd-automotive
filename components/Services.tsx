@@ -68,8 +68,11 @@ export default function Services() {
             <h3 className="font-bebas text-4xl md:text-5xl text-jd-white tracking-wider mb-3">
               DON&apos;T SEE WHAT YOU NEED?
             </h3>
-            <p className="font-barlow text-xl text-jd-silver mb-6 tracking-wide">
+            <p className="font-barlow text-xl text-jd-silver mb-2 tracking-wide">
               If it&apos;s got an engine, we can fix it. Call or schedule online and let&apos;s talk.
+            </p>
+            <p className="font-barlow text-base text-jd-red/80 tracking-widest uppercase mb-6">
+              💳 Financing available — ask us about payment options
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="tel:+12282076655" className="btn-primary">
