@@ -86,7 +86,7 @@ export default function Contact() {
               <div className="border border-jd-red/20 bg-jd-red/5 rounded-lg p-4">
                 <p className="font-barlow text-sm font-bold text-jd-white mb-1">📍 Having trouble finding us?</p>
                 <p className="font-inter text-xs text-jd-gray leading-relaxed mb-2">
-                  We&apos;re on Pass Rd — attached to <strong className="text-jd-silver">Cubesmart Self Storage</strong>, near Popps Ferry Rd. AutoZone is just to our west, Walgreens to the east. If you get to Burger King or Starbucks you&apos;ve gone a little too far north.
+                  We&apos;re on Pass Rd — attached to <strong className="text-jd-silver">Cubesmart Self Storage</strong>, near Popps Ferry Rd. AutoZone is just to our west, Walgreens to the east.
                 </p>
                 <p className="font-inter text-xs text-jd-gray leading-relaxed mb-3">
                   Can&apos;t find us? Call and we&apos;ll talk you right to the door.
