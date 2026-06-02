@@ -1,6 +1,6 @@
 export default function TrustBar() {
   const stats = [
-    { value: '20+', label: 'Years Experience' },
+    { value: '170+', label: 'Years Combined Experience' },
     { value: '5K+', label: 'Happy Customers' },
     { value: '4.9★', label: 'Google Rating' },
     { value: '100%', label: 'Satisfaction Goal' },

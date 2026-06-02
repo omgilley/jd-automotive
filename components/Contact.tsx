@@ -50,7 +50,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="mailto:jdautomotive1017@gmail.com"
+                href="mailto:jadautomotive@yahoo.com"
                 className="flex items-center gap-4 group border border-jd-border hover:border-jd-red/50 bg-jd-card rounded-lg p-4 transition-all"
               >
                 <div className="w-12 h-12 rounded-lg bg-jd-red/10 border border-jd-red/30 flex items-center justify-center flex-shrink-0">
@@ -59,7 +59,7 @@ export default function Contact() {
                 <div>
                   <div className="font-barlow text-xs tracking-widest text-jd-gray uppercase mb-0.5">Email</div>
                   <div className="font-barlow font-bold text-base text-jd-white group-hover:text-jd-red transition-colors">
-                    jdautomotive1017@gmail.com
+                    jadautomotive@yahoo.com
                   </div>
                 </div>
               </a>
@@ -86,7 +86,7 @@ export default function Contact() {
               <div className="border border-jd-red/20 bg-jd-red/5 rounded-lg p-4">
                 <p className="font-barlow text-sm font-bold text-jd-white mb-1">📍 Having trouble finding us?</p>
                 <p className="font-inter text-xs text-jd-gray leading-relaxed mb-2">
-                  We&apos;re on Pass Rd — right next to <strong className="text-jd-silver">Cubesmart Self Storage</strong>, near Popps Ferry Rd. AutoZone is just to our west, Walgreens to the east. If you get to Burger King or Starbucks you&apos;ve gone a little too far south.
+                  We&apos;re on Pass Rd — attached to <strong className="text-jd-silver">Cubesmart Self Storage</strong>, near Popps Ferry Rd. AutoZone is just to our west, Walgreens to the east. If you get to Burger King or Starbucks you&apos;ve gone a little too far north.
                 </p>
                 <p className="font-inter text-xs text-jd-gray leading-relaxed mb-3">
                   Can&apos;t find us? Call and we&apos;ll talk you right to the door.
@@ -124,6 +124,8 @@ export default function Contact() {
                     Mon–Fri: 8:00 AM – 5:00 PM
                     <br />
                     <span className="text-jd-gray">Sat–Sun: Closed</span>
+                    <br />
+                    <span className="text-jd-red">After hours drop off available</span>
                   </div>
                 </div>
               </div>

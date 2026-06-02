@@ -70,7 +70,7 @@ const jsonLd = {
   description: 'Expert auto repair and custom hotrod builds in Biloxi, MS. Family owned and operated.',
   url: SITE_URL,
   telephone: '+12282076655',
-  email: 'jdautomotive1017@gmail.com',
+  email: 'jadautomotive@yahoo.com',
   image: `${SITE_URL}/logo.webp`,
   priceRange: '$$',
   address: {

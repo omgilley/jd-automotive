@@ -92,8 +92,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:jdautomotive1017@gmail.com" className="flex items-center gap-2 font-inter text-xs text-jd-gray hover:text-jd-red transition-colors">
-                  <span>✉️</span> jdautomotive1017@gmail.com
+                <a href="mailto:jadautomotive@yahoo.com" className="flex items-center gap-2 font-inter text-xs text-jd-gray hover:text-jd-red transition-colors">
+                  <span>✉️</span> jadautomotive@yahoo.com
                 </a>
               </li>
               <li className="flex items-start gap-2 font-inter text-xs text-jd-gray">
