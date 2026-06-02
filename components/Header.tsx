@@ -36,7 +36,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
           <div className="flex items-center gap-6">
             <span className="font-barlow text-xs text-jd-gray tracking-wide">
-              <span className="text-jd-red mr-1">🕐</span> Mon–Fri: 8:00 AM – 5:00 PM &nbsp;|&nbsp; Sat–Sun: Closed
+              <span className="text-jd-red mr-1">🕐</span> Mon–Fri: 8:00 AM – 5:00 PM &nbsp;|&nbsp; Sat–Sun: Closed &nbsp;|&nbsp; After hours drop off available
             </span>
             <span className="font-barlow text-xs text-jd-gray tracking-wide">
               <span className="text-jd-red mr-1">📍</span> 2381 Pass Rd, Biloxi, MS 39531
