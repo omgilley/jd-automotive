@@ -4,7 +4,7 @@ export default function Services() {
   const services = [
     { icon: '🔧', title: 'Engine Repair & Diagnostics', desc: 'Full engine diagnostics and repair using the latest scan tools.' },
     { icon: '🛑', title: 'Brake Service', desc: 'Pads, rotors, calipers, brake fluid — complete brake system service.' },
-    { icon: '🔄', title: 'Transmission Service', desc: 'Fluid flushes, repairs, and diagnostics for automatic and manual transmissions. (Rebuilds not available.)' },
+    { icon: '🔄', title: 'Transmission Service', desc: 'Fluid flushes, repairs, and diagnostics for automatic and manual transmissions.' },
     { icon: '💡', title: 'Electrical & Charging', desc: 'Battery, alternator, wiring, fuses, and full electrical diagnostics.' },
     { icon: '❄️', title: 'A/C & Heating', desc: 'Recharge, repair, or full replacement of your vehicle\'s climate system.' },
     { icon: '🛢️', title: 'Oil Changes', desc: 'Conventional and synthetic oil changes with multi-point inspection.' },
