@@ -41,10 +41,10 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: '/IMG_1037.JPEG',
-        width: 1200,
-        height: 800,
-        alt: "J&D's Automotive — Custom Hotrod Builds in Biloxi, MS",
+        url: '/logo.webp',
+        width: 1344,
+        height: 1202,
+        alt: "J&D's Automotive",
       },
     ],
   },
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "J&D's Automotive | Built Tough. Fixed Right.",
     description: "Expert auto repair and custom hotrod builds in Biloxi, MS. (228) 207-6655.",
-    images: ['/IMG_1037.JPEG'],
+    images: ['/logo.webp'],
   },
   alternates: {
     canonical: SITE_URL,
